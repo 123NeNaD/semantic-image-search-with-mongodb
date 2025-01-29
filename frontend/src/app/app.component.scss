@@ -1,0 +1,415 @@
+:host {
+  display: block;
+  background-color: rgb(0, 30, 43);
+  min-height: 100vh;
+  color: #ffffff;
+
+  .search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    .search-header {
+      text-align: center;
+      margin-bottom: 3rem;
+
+      .logo {
+        width: 200px;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+      }
+    }
+
+    .search-methods {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+
+        &.active {
+          background-color: #00ed64;
+          color: #061621;
+        }
+
+        &:hover:not(.active) {
+          background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .icon {
+          width: 20px;
+          height: 20px;
+          stroke: currentColor;
+          stroke-width: 2;
+          fill: none;
+        }
+      }
+    }
+
+    .search-content {
+      max-width: 700px;
+      margin: 0 auto;
+
+      .text-search {
+        position: relative;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        input {
+          width: 100%;
+          padding: 1rem;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          color: #ffffff;
+          font-size: 1rem;
+          background-color: rgba(255, 255, 255, 0.05);
+          transition: border-color 0.2s ease;
+          box-sizing: border-box;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          &:focus {
+            outline: none;
+            border-color: #00ed64;
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        .submit-btn {
+          padding: 0.75rem 1.5rem;
+          height: 50px;
+          background-color: #00ed64;
+          color: #061621;
+          border: none;
+          border-radius: 6px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+
+          &:hover:not(:disabled) {
+            background-color: #00c653;
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      .image-upload {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.2s ease;
+        background-color: rgba(255, 255, 255, 0.05);
+
+        &.dragging {
+          border-color: #00ed64;
+          background-color: rgba(0, 237, 100, 0.1);
+        }
+
+        .file-input {
+          display: none;
+        }
+
+        .upload-content {
+          .upload-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            stroke: #adb5bd;
+            stroke-width: 2;
+            fill: none;
+          }
+
+          .upload-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #228be6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+              background-color: #1c7ed6;
+            }
+          }
+
+          p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+          }
+        }
+
+        .preview-content {
+          .preview-image {
+            max-height: 200px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+          }
+
+          .preview-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            .submit-btn {
+              padding: 0.75rem 1.5rem;
+              background-color: #00ed64;
+              color: #061621;
+              border: none;
+              border-radius: 6px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: background-color 0.2s ease;
+
+              &:hover:not(:disabled) {
+                background-color: #00c653;
+              }
+
+              &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+              }
+            }
+
+            .clear-btn {
+              padding: 0.75rem 1.5rem;
+              background-color: rgba(255, 255, 255, 0.1);
+              color: #ffffff;
+              border: none;
+              border-radius: 6px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: background-color 0.2s ease;
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top-color: #00ed64;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .results {
+      margin-top: 3rem;
+
+      h2 {
+        font-size: 1.5rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+
+        .product-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+          }
+
+          .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+
+          .product-info {
+            padding: 1rem;
+
+            h3 {
+              font-size: 1.1rem;
+              color: #ffffff;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 0;
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 1rem;
+        stroke: rgba(255, 255, 255, 0.5);
+        stroke-width: 2;
+        fill: none;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    .search-container {
+      padding: 1rem;
+
+      .search-header {
+        margin-bottom: 2rem;
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .search-methods {
+        flex-direction: column;
+        gap: 0.5rem;
+
+        button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      .search-content {
+        .text-search {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .submit-btn {
+            width: 100%;
+          }
+        }
+
+        .image-upload {
+          padding: 1.5rem;
+
+          .preview-content {
+            .preview-actions {
+              flex-direction: column;
+              gap: 0.5rem;
+
+              button {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    .search-container {
+      .search-header {
+        h1 {
+          font-size: 1.75rem;
+        }
+      }
+
+      .search-content {
+        .text-search {
+          input {
+            font-size: 0.9rem;
+          }
+
+          .submit-btn {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        .image-upload {
+          .upload-content {
+            .upload-btn {
+              padding: 0.75rem 1rem;
+              font-size: 0.9rem;
+            }
+          }
+
+          .preview-content {
+            .preview-actions {
+              .clear-btn,
+              .submit-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+
+      .results {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
